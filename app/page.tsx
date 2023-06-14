@@ -17,12 +17,12 @@ export default function Formulario() {
           <h1>Monty Hall</h1>
         </Cartao>
         <Cartao>
-          <EntradaNumerica text="Qtde Portas?" value={qtdePortas} onChange={novaQtde => setQtdePortas(novaQtde)} />
+          <EntradaNumerica text="Quantidade de portas" value={qtdePortas} onChange={novaQtde => setQtdePortas(novaQtde)} />
         </Cartao>
       </div>
       <div>
         <Cartao>
-          <EntradaNumerica text="Porta com Presente?" value={comPresente} onChange={novaPortaComPresente => setComPresente(novaPortaComPresente)} />
+          <EntradaNumerica text="Em qual porta estará o presente?" value={comPresente} onChange={novaPortaComPresente => setComPresente(novaPortaComPresente)} />
         </Cartao>
         <Link href={`/jogo?portas=${qtdePortas}&temPresente=${comPresente}`}>
           <Cartao bgcolor="#28a085">
