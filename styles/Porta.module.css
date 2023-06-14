@@ -34,7 +34,7 @@
 
 .macaneta {
     position: absolute;
-
+    cursor: pointer;
     align-self: flex-start;
     top: calc(0.45 * var(--area-porta-altura));
     height: 20px;
