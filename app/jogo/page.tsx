@@ -8,6 +8,7 @@ import { useSearchParams } from "next/navigation";
 import PortaModel from "@/model/porta";
 
 export default function Jogo() {
+    const [valido, setValido] = useState(false);
     const [portas, setPortas] = useState<PortaModel[]>([]);
 
     const searchParams = useSearchParams()
@@ -16,11 +17,18 @@ export default function Jogo() {
     const temPresente = Number(searchParams.get('temPresente'))
 
     useEffect(() => {
+        const qtdePortasValida = qtde >= 3 && qtde <= 100
+        const temPresenteValido = temPresente >= 1 && temPresente <= qtde
+
+        setValido(qtdePortasValida && temPresenteValido)
+    }, [qtde])
+
+    useEffect(() => {
         setPortas(criarPortas(qtde, temPresente))
     }, [searchParams])
 
     function renderizarPortas() {
-        return portas.map(porta => {
+        return valido && portas.map(porta => {
             return <Porta key={porta.numero} value={porta} onChange={novaPorta => setPortas(atualizarPortas(portas, novaPorta))} />
         })
     }
